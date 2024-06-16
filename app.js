@@ -4,6 +4,7 @@ const cors=require("cors")
 const bcrypt=require("bcryptjs")
 const {wardenmodel}=require("./models/register")
 const jwt =require("jsonwebtoken")
+const { studentmodel } = require("./models/addstudent")
 
 
 const app=express()
@@ -62,7 +63,12 @@ app.post("/login",(req,res)=>{
     )
     })
 
-
+    app.post("/add",(req,res)=>{
+        let input=req.body
+        let student=new studentmodel(input)
+        student.save()
+        res.json({"status":"success"})
+    })
    
 app.listen(8080,()=>{
     console.log("server started")

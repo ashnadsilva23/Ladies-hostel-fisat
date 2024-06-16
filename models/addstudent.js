@@ -1,5 +1,5 @@
 const mongoose=require("mongoose")
-const schema=mongoose.schema(
+const schema=mongoose.Schema(
     {
         "sname":{type:String,required:true},
         "admnNo":{type:String,required:true},

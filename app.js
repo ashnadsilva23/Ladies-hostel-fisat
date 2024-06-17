@@ -69,6 +69,19 @@ app.post("/login",(req,res)=>{
         res.json({"status":"success"})
     })
 
+    app.post("/search",(req,res)=>{
+        let input=req.body
+        studentmodel.find(input).then(
+            (data)=>{
+                res.json(data)
+            }
+        ).catch(
+            (error)=>{
+                res.json(error)
+            }
+        )
+    })
+
     app.post("/viewstud",(req,res)=>{
         studentmodel.find().then(
             (data)=>{

@@ -82,6 +82,20 @@ app.post("/login",(req,res)=>{
         )
     })
 
+    app.post("/delete",(req,res)=>{
+        let input=req.body
+        studentmodel.findByIdAndDelete(input._id).then(
+            (response)=>{
+                res.json({"status":"success"})
+            }
+        ).catch(
+            (error)=>{
+                res.json("error")
+            }
+        )
+    })
+
+
     app.post("/viewstud",(req,res)=>{
         studentmodel.find().then(
             (data)=>{

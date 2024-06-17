@@ -6,7 +6,6 @@ const {wardenmodel}=require("./models/register")
 const jwt =require("jsonwebtoken")
 const { studentmodel } = require("./models/addstudent")
 
-
 const app=express()
 app.use(cors())
 app.use(express.json())
@@ -69,7 +68,21 @@ app.post("/login",(req,res)=>{
         student.save()
         res.json({"status":"success"})
     })
-   
+
+    app.post("/viewstud",(req,res)=>{
+        studentmodel.find().then(
+            (data)=>{
+                res.json(data)
+            }
+        ).catch(
+            (error)=>{
+                res.json(error)
+            }
+        )
+    })
+
+
+    
 app.listen(8080,()=>{
     console.log("server started")
 })

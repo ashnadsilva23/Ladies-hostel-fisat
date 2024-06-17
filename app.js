@@ -69,6 +69,19 @@ app.post("/login",(req,res)=>{
         student.save()
         res.json({"status":"success"})
     })
+
+    app.post("/search",(req,res)=>{
+        let input=req.body
+        studentmodel.find(input).then(
+            (data)=>{
+                res.json(data)
+            }
+        ).catch(
+            (error)=>{
+                res.json(error)
+            }
+        )
+    })
    
 app.listen(8080,()=>{
     console.log("server started")
